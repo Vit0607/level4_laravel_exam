@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\UserController::class, 'users'])->name('home');
+
+//Route::get('/login', [UserController::class, 'login'])->name('login');
+
+//Route::get('/edit', [UserController::class, 'edit'])->name('edit');
+//
+//Route::get('/user-media', [UserController::class, 'media'])->name('media');
+//
+//Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+//
+//Route::get('/security', [UserController::class, 'security'])->name('security');
+//
+//Route::get('/status', [UserController::class, 'status'])->name('status');
+
+//Route::get('/users', [UserController::class, 'users'])->name('users');
+
+//Route::get('/create', [UserController::class, 'create'])->name('create');
+
+//Route::get('/register', [UserController::class, 'register'])->name('register');
