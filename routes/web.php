@@ -33,3 +33,17 @@ Route::get('/users', [UserController::class, 'users'])->name('users');
 //Route::get('/create', [UserController::class, 'create'])->name('create');
 
 //Route::get('/register', [UserController::class, 'register'])->name('register');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+});
+
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [\App\Http\Controllers\AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register_process', [\App\Http\Controllers\AuthController::class, 'register'])->name('register_process');
+
+    Route::get('/login', [\App\Http\Controllers\AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login_process', [\App\Http\Controllers\AuthController::class, 'login'])->name('login_process');
+});
+
